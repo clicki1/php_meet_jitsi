@@ -1,0 +1,178 @@
+				<div class="clear"></div>
+		    </div>
+        </div>
+      </div>
+   </div>
+   <!-- .row -->
+</div>
+<script>
+	jQuery(document).ready(function($) {
+		$(document).on("click",".going-to-event",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'going-to-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+ event_id +"]").find('.events-list-dropup-menu').html("<span class='main'>"+data['html'] +"</span>")
+					}
+				}
+			})
+			
+		});
+
+		$(document).on("click",".interested-in-event",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'interested-in-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+ event_id +"]").find('.events-list-dropup-menu').html("<span class='main'>"+data['html'] +"</span>")
+
+					}
+				}
+			})
+		});
+
+		$(document).on("click",".events-going-list-unset",function(event) {
+			var event_id = $(this).attr('data-event-ident');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'notgoing-to-event',eid:event_id},
+				success:function(data){
+					if (data['status'] == 200) {
+						$("[data-event="+event_id+"]").slideUp('fast', function() {
+							$(this).remove()
+						});
+					}
+				}
+			})
+		});
+
+		$(".load-more-events").click(function(event) {
+			var last_id = ($(".events-list-wrapper").length > 0) ? $(".events-list-wrapper").last().attr('data-event') : 0;
+			var type    = $(this).attr('data-events-type');
+			$.ajax({
+				url: Wo_Ajax_Requests_File(),
+				type: 'GET',
+				dataType: 'json',
+				data: {f: 'load-more-events',
+					   s:type,
+					   offset:last_id 
+					},
+
+				success:function(data){
+					if (data['status'] == 200) {
+						$("#events-" + type).append(data['html'])
+					}else{
+						$(".posts_load").find('.load-more').html(data['html'])
+					}
+				}
+			})
+		});
+
+
+	});
+</script>
+<style>
+    .rncb-widget-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+    .rncb-widget-field {
+        margin-top: 4px;
+    }
+    .rncb-form-element {
+
+    }
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+</style>
+<div id="widgetContainer" style="background-color: #dadad2"></div>
+<div class="rncb-widget-form">
+    <input class="rncb-widget-field" type="hidden" name="fld_amount" id="fld_amount" value="<?php echo $wo['event']['event_price']; ?>" />
+    <div class="rncb-form-element">
+        <input class="rncb-widget-field" type="hidden" name="fld_email" id="fld_email" value="<?php echo $wo['user']['email']; ?>" placeholder="Email" />
+    </div>
+
+    <div class="rncb-form-element">
+        <button name="button" type="button" id="initWidget" aria-busy="false" style="display:none">
+            <span>Оплатить сейчас</span>
+        </button>
+    </div>
+    <div class="rncb-form-element">
+        <button name="button" type="button" id="continueButton" aria-busy="false" style="display: none">
+            <span></span>
+        </button>
+    </div>
+</div>
+
+            
+<script>
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    jQuery(document).ready(function() {
+        const observer = new MutationObserver(function(mutations) {
+            const iframe = document.querySelector("iframe[name='hppIFrame']");
+            if (iframe) {
+                iframe.style.removeProperty('display');
+                observer.disconnect();
+            }
+        });
+        observer.observe(document, {
+            attributes: false,
+            childList: true,
+            characterData: false,
+            subtree: true
+        });
+
+        document.getElementById('initWidget').addEventListener('click', function(el) {
+            const orderData = {
+                'order': {
+                    "typeRid": "Sale Order Type_Single_CVV",
+                    "amount": document.querySelector('#fld_amount').value.toString(),
+                    "currency": "RUB",
+                    "description": "",
+                    "language": "ru",
+                    "srcEmail": document.getElementById('fld_email').value.toString(),
+
+                    "hppRedirectUrl": location.href
+                },
+           'auth': {
+                    'userName': 'TerminalSys/50000308',
+                    'password': 'Nov@22112023'
+                },
+                'terminalId': '1252',
+                'merchantId': '1245'
+            };
+            if (false) {
+                orderData.order.description = orderData.order.description.substr(0, 140);
+            }
+            const listeners = {
+                onSuccess(data) {
+                    console.log('Заказ оплачен', data);
+                },
+                onFail(data) {
+                    console.log('Произошла ошибка', data);
+                }
+            };
+            const hppIntegrationApi = new HppIntegrationApi(orderData, listeners);
+            const payButton = document.getElementById('continueButton');
+            hppIntegrationApi.createWidget(document.getElementById('widgetContainer'), {
+                payButton
+            });
+            payButton.click();
+        });
+    });
+</script>

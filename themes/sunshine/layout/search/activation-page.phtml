@@ -1,0 +1,299 @@
+
+<?php 
+ 
+ ?>
+<div class="page-margin">
+    <div class="wow_content popular_posts_hdr flex">
+        <h2 class="flex">&nbsp;<p>Для поиска контактов заполните свои данные<b>Вы получите возможность найти подходящие контакты и начать коммуникацию</b></p>
+        </h2>
+     
+    </div>
+</div>
+
+<div class="page-margin wow_content wow_usr_steps_prnt">
+    <div class="add-photo wow_usr_steps">
+        <form class="setting-general-form form-horizontal startup_form" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="wow_form_fields">
+                        <label for="first_name"><?php echo $wo['lang']['first_name']; ?></label>
+                        <input id="first_name" name="first_name" type="text" class="form-control input-md" value="<?php echo $wo['user']['first_name'] ?>" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow_form_fields">
+                        <label for="last_name"><?php echo $wo['lang']['last_name']; ?></label>
+                        <input id="last_name" name="last_name" type="text" class="form-control input-md" value="<?php echo $wo['user']['last_name'] ?>" autocomplete="off">
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="wow_form_fields">
+                        <label for="relationship">Город*</label>
+                        <select name="city_id" id="city_id" data-live-search="true">
+                            <option value="null">Выберите город</option>
+                            <?php foreach (Wo_GetCity() as $city) { ?>
+                                <option id="city<?php echo ($city->id) ?>" value="<?php echo ($city->id) ?>" <?php if ($city->id == $wo['user']['city_id']) : ?>selected="true" <?php endif; ?>><?php echo $city->name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+                <h4>Мои навыки</h4>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="wow_form_fields mb-0">
+                    <label for="relationship">Моя сфера деятельности*</label>
+                    <select name="user_category_id" id="user_category_id">
+                        <option value="0">Выберите сферу деятельности</option>
+                        <?php foreach (Wo_GetUserCategories() as $category) { ?>
+                            <option id="opt_cat<?php echo ($category->id) ?>" value="<?php echo ($category->id) ?>" <?php if ($category->id == $wo['user']['category_id']) : ?>selected="true" <?php endif; ?>><?php echo $category->name ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 round-check">
+                <div class="wow_form_fields mb-0">
+                    <label class="mt-0">Специализация</label>
+                    <?php foreach (Wo_GetUserCategoryTags('array') as $tag) : ?>
+                        <input type="checkbox" id="user_tg_in<?php echo $tag->id; ?>" name="tag[<?php echo $tag->id; ?>]" value="<?php echo $tag->id; ?>" style="display:none">
+                        <label id="user_tg_lb<?php echo $tag->id; ?>" class="mt-0" for="user_tg_in<?php echo $tag->id; ?>" style="display:none"><?php echo $tag->name; ?></label>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="wow_side_online">Ищу контакты (выберите специализации)*</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="wow_form_fields mb-0">
+                        <label for="relationship" class="">Специализации*</label>
+                        <select name="user_tgs_find_id" id="user_tgs_find_id" data-live-search="true">
+                            <option id="opt_find_tg0" value="0">Добавить специализацию</option>
+                            <?php foreach (Wo_GetUserCategoryTags('array') as $tag) { ?>
+                                <option id="opt_find_tg<?php echo ($tag->id) ?>" value="<?php echo ($tag->id) ?>"><?php echo $tag->name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+            <div class="col-md-12 round-check">
+                <div class="wow_form_fields mb-0">
+                    <label class="mt-0">Выбранные специализации*:</label>
+                    <div id="find_box_check" class="wow_form_fields">
+                        <?php foreach (Wo_GetUserCategoryTags('array') as $tag) : ?>
+                            <input type="checkbox" id="check_tgs_find_id<?php echo $tag->id; ?>" name="find_tag[<?php echo $tag->id; ?>]" value="<?php echo $tag->id; ?>">
+                            <label id="lb_check_tgs_find_id<?php echo $tag->id; ?>" class="mt-0" for="check_tgs_find_id<?php echo $tag->id; ?>" style="display:none"><?php echo Wo_GetUserCategories($tag->category_id)[0]->name . ' > ' . $tag->name; ?></label>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="wow_side_online">*поиск контактов будет производиться по выбранным вами специализациям</h6>
+                    </div>
+                </div>
+
+
+
+
+
+            
+                <?php
+                $cutoff = 1930;
+                $now = date('Y');
+                $birthday = '';
+                if ($wo['user']['birthday'] != '0000-00-00') {
+                    $birthday = explode('-', $wo['user']['birthday']);
+                }
+                ?>
+              
+                <input type="hidden" name="user_id" value="<?php echo $wo['user']['user_id']; ?>">
+                <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession(); ?>">
+        </form>
+        <div class="clear"></div>
+    </div>
+    <div class="continue-button wow_usr_steps_cont">
+        <!--                        <small class="skip-step btn btn-default btn-mat" onclick="Wo_SkipStep('start_up_info');"><?php echo $wo['lang']['skip']; ?></small>-->
+        <button class="btn con-button btn-main btn-mat" onclick="Wo_SubmitInfoForm();"><?php echo $wo['lang']['start_up_continue']; ?> <svg viewBox="0 0 24 24">
+                <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+            </svg></button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(".startup_form").validate({
+        rules: {
+            "city_id": {
+                required: true,
+                min: 1,
+            },
+            "user_category_id": {
+                required: true,
+                min: 1,
+            },
+            "first_name": {
+                required: true,
+            },
+            "last_name": {
+                required: true,
+            },
+            "find_tag[]": {
+                required: true,
+            },
+      
+         
+        },
+        messages: {
+            "city_id": {
+                required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                min: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* выберите город</span></div>",
+            },
+            "user_category_id": {
+                required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                min: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* выберите свою сферу деятельности</span></div>",
+            },
+            "find_tag[]": {
+                required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+           },
+            "first_name": {
+                required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+           },
+            "last_name": {
+                required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+           },
+       
+        
+        },
+    });
+    
+    
+    
+    //выбираем выбранные тэги
+    $("#user_tgs_find_id").change(function(event) {
+        let value = $("#user_tgs_find_id").val();
+        $(`#check_tgs_find_id${value}`).prop("checked", true);
+        $(`#lb_check_tgs_find_id${value}`).css("display", "inline-block");
+        $("#user_tgs_find_id").val(0);
+        var select = document.getElementById('opt_find_tg' + value);
+        select.remove();
+        $('#user_tgs_find_id').selectpicker('refresh');
+    });
+
+    $(document).ready(function() {
+        var cat_tags = <?php echo Wo_GetUserCategoryTags() ?? []; ?>;
+    var category_id = <?php echo $wo['user']['category_id'] ?? '0'; ?>;
+
+    (function MyTagChekedNew() {
+        var my_tags = <?php echo Wo_GetUserProfileTags($wo['user']['id']); ?>;
+        if (Object.keys(my_tags).length) {
+            for (var key in cat_tags) {
+                if (my_tags[cat_tags[key].id]) {
+                    $("#user_tg_lb" + cat_tags[key].id).css("display", "inline-block");
+                    $(`#user_tg_in${cat_tags[key].id}`).prop("checked", true);
+                } else {
+                    $("#user_tg_lb" + cat_tags[key].id).css("display", "none");
+                    $(`#user_tg_in${cat_tags[key].id}`).css("display", "none");
+                    $(`#user_tg_in${cat_tags[key].id}`).prop("checked", false);
+                    if (cat_tags[key].category_id == category_id) {
+                        $("#user_tg_lb" + cat_tags[key].id).css("display", "inline-block");
+                        $(`#user_tg_in${cat_tags[key].id}`).prop("checked", false);
+                    }
+                }
+            }
+        }
+    })();
+    function GetTagsCategoryNew() {
+        const category_id = $("#user_category_id").val();
+        for (var key in cat_tags) {
+            $("#user_tg_lb" + cat_tags[key].id).css("display", "none");
+            $(`#user_tg_in${cat_tags[key].id}`).css("display", "none");
+            $(`#user_tg_in${cat_tags[key].id}`).prop("checked", false);
+            if (cat_tags[key].category_id == category_id) {
+                $("#user_tg_lb" + cat_tags[key].id).css("display", "inline-block");
+                $(`#user_tg_in${cat_tags[key].id}`).prop("checked", true);
+            } else {
+                $("#user_tg_lb" + cat_tags[key].id).css("display", "none");
+                $(`#user_tg_in${cat_tags[key].id}`).css("display", "none");
+                $(`#user_tg_in${cat_tags[key].id}`).prop("checked", false);
+            }
+        }
+    }
+       (function MyTagChekedFindsNew() {
+        var my_tags_find = <?php echo Wo_GetUserFindTags($wo['user']['id']); ?>;
+        // console.log(my_tags_find);
+        if (Object.keys(my_tags_find).length) {
+
+            for (var key in my_tags_find) {
+                //   console.log(key);
+
+                $(`#check_tgs_find_id${key}`).prop("checked", true);
+                $(`#lb_check_tgs_find_id${key}`).css("display", "inline-block");
+                var select = document.getElementById('opt_find_tg' + key);
+
+                select.remove();
+                //  $('#user_tgs_find_id').selectpicker('refresh');
+            }
+        }
+    })();
+
+
+    $("#user_category_id").change(function(event) {
+        GetTagsCategoryNew();
+    });
+
+
+
+    });
+
+    $(document).ready(function() {
+        $('#city_id').selectpicker();
+    });
+
+    $(document).ready(function() {
+        $('#user_tgs_find_id').selectpicker();
+    });
+    $(function() {
+        $("#usr_birthday").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: new Date('<?php echo date('Y') - 14; ?>-12-31'),
+            dateFormat: 'dd-mm-yy',
+            yearRange: "<?php echo date('Y') - 129; ?>:<?php echo date('Y') - 14; ?>",
+            prevText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>',
+            nextText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>'
+        });
+    });
+
+    function Wo_SubmitInfoForm() {
+        $("form.setting-general-form").submit();
+    }
+    $(function() {
+        $('form.setting-general-form').ajaxForm({
+            url: Wo_Ajax_Requests_File() + '?f=update_user_information_startup&a=activation',
+            beforeSend: function() {
+                $('button').attr('disabled', true);
+                $('button').text("<?php echo $wo['lang']['please_wait']; ?>");
+            },
+            success: function(data) {
+                if (data.status == 200) {
+                    window.location.href = '<?php echo Wo_SeoLink('index.php?link1=search'); ?>';
+                }
+            }
+        });
+    });
+</script>

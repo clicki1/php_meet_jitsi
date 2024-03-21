@@ -1,0 +1,8 @@
+{
+    "sql_db_host": "localhost",
+    "sql_db_user": "maxmeet_ru",
+    "sql_db_pass": "FiMDyPCp7KBXHnKI",
+    "sql_db_name": "maxmeet_ru",
+    "site_url": "https://maxmeet.ru",
+    "purchase_code": "1"
+}

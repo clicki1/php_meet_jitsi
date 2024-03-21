@@ -1,0 +1,133 @@
+<div class="col-md-4 events-list-wrapper" <?php if (($wo['event']['event_active'] == 3)) : ?>style="opacity: 0.5" <?php endif; ?> data-event="<?php echo ($wo['event']['id']); ?>">
+    <div class="events-list-cover">
+
+        <a href="<?php echo $wo['event']['url']; ?>" class="event_cover" data-ajax="?link1=show-event&eid=<?php echo ($wo['event']['id']); ?>">
+            <img src="<?php echo $wo['event']['cover']; ?>" class="events-list-cover-img">
+
+            <span <?php if ($wo['event']['event_active'] == 1) : ?> style="background-color: #0bff0b" <?php elseif ($wo['event']['event_active'] == 2) : ?> style="background-color: #ff5e5e" <?php elseif ($wo['event']['event_active'] == 3) : ?> style="background-color: black" <?php endif; ?>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <path d="M15.8333 3.33398H4.16667C3.24619 3.33398 2.5 4.08018 2.5 5.00065V16.6673C2.5 17.5878 3.24619 18.334 4.16667 18.334H15.8333C16.7538 18.334 17.5 17.5878 17.5 16.6673V5.00065C17.5 4.08018 16.7538 3.33398 15.8333 3.33398Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M13.3334 1.66602V4.99935" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M6.66663 1.66602V4.99935" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M2.5 8.33398H17.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <?php
+                echo $wo['event']['start_date'] . ' ' . date('H:i', strtotime($wo['event']['start_time']));
+                ?>
+            </span>
+
+            <div class="event_cover__repost">
+                <script src="https://yastatic.net/share2/share.js"></script>
+                <div class="ya-share2" data-popup-position="outer" data-curtain data-size="s" data-url="<?php echo $wo['event']['url']; ?>" data-shape="round" data-color-scheme="whiteblack" data-limit="0" data-more-button-type="short" data-services="vkontakte,odnoklassniki,telegram,viber,whatsapp"></div>
+            </div>
+        </a>
+        <div class="event-l-info">
+            <div>
+                <div class="event-status-btn">
+                    <!-- <div class="event-location-status__btn">
+                        <script src="https://yastatic.net/share2/share.js"></script>
+                        <div class="ya-share2" data-popup-position="outer" data-curtain data-size="s" data-url="<?php echo $wo['event']['url']; ?>" data-shape="round" data-color-scheme="whiteblack" data-limit="0" data-more-button-type="short" data-services="vkontakte,odnoklassniki,telegram,viber,whatsapp"></div>
+                    </div> -->
+                    <?php
+                    $btn_status_online = '
+					<div class="event-location-status__btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 25" fill="none">
+							<path d="M5 5.33167C5 4.5405 5.87525 4.06266 6.54076 4.49049L17.6915 11.6588C18.3038 12.0525 18.3038 12.9475 17.6915 13.3412L6.54076 20.5095C5.87525 20.9373 5 20.4595 5 19.6683V5.33167Z" stroke="#5FC956" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						Онлайн
+					</div>
+				';
+                    $btn_status_offline = '
+					<div class="event-location-status__btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 25" fill="none">
+							<g clip-path="url(#clip0_904_25494)">
+							<path d="M21 10.5C21 17.5 12 23.5 12 23.5C12 23.5 3 17.5 3 10.5C3 8.11305 3.94821 5.82387 5.63604 4.13604C7.32387 2.44821 9.61305 1.5 12 1.5C14.3869 1.5 16.6761 2.44821 18.364 4.13604C20.0518 5.82387 21 8.11305 21 10.5Z" stroke="#D94242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="#D94242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+							<clipPath id="clip0_904_25494">
+								<rect width="24" height="24" fill="white" transform="translate(0 0.5)"/>
+							</clipPath>
+							</defs>
+						</svg>
+						Оффлайн (' . $wo['event']['location'] . ')
+					</div>
+				';
+
+                    $btn_status_all = '
+					<div class="event-location-status__btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 25" fill="none">
+							<path d="M5 5.33167C5 4.5405 5.87525 4.06266 6.54076 4.49049L17.6915 11.6588C18.3038 12.0525 18.3038 12.9475 17.6915 13.3412L6.54076 20.5095C5.87525 20.9373 5 20.4595 5 19.6683V5.33167Z" stroke="#5FC956" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						Онлайн
+					</div>
+					<div class="event-location-status__btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 25" fill="none">
+							<g clip-path="url(#clip0_904_25494)">
+							<path d="M21 10.5C21 17.5 12 23.5 12 23.5C12 23.5 3 17.5 3 10.5C3 8.11305 3.94821 5.82387 5.63604 4.13604C7.32387 2.44821 9.61305 1.5 12 1.5C14.3869 1.5 16.6761 2.44821 18.364 4.13604C20.0518 5.82387 21 8.11305 21 10.5Z" stroke="#D94242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M12 13.5C13.6569 13.5 15 12.1569 15 10.5C15 8.84315 13.6569 7.5 12 7.5C10.3431 7.5 9 8.84315 9 10.5C9 12.1569 10.3431 13.5 12 13.5Z" stroke="#D94242" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+							<clipPath id="clip0_904_25494">
+								<rect width="24" height="24" fill="white" transform="translate(0 0.5)"/>
+							</clipPath>
+							</defs>
+						</svg>
+						' . $wo['event']['location'] . '
+					</div>
+				';
+
+                    // if ($wo['event']['status'] == 0) {
+                    //     echo $btn_status_all;
+                    // } elseif ($wo['event']['status'] == 1) {
+                    //     echo $btn_status_online;
+                    // } else {
+                    //     echo $btn_status_offline;
+                    // };
+                    ?>
+                </div>
+                <h3 class="events-list-name">
+                    <a href="<?php echo $wo['event']['url']; ?>" data-ajax="?link1=show-event&eid=<?php echo ($wo['event']['id']); ?>"><?php echo $wo['event']['name']; ?></a>
+                </h3>
+                <span><?php echo mb_substr($wo['event']['description'], 0, 200); ?> </span>
+
+            </div>
+            <div class="event-l-btns">
+                <?php //if ($wo['event']['event_active'] === 0) : 
+                ?>
+                <?php if (Wo_IsAdmin() || $wo['event']['poster_id'] == $wo['user']['id'] && $wo['event']['start_timestamp'] > (time() + 3600)) : ?>
+                    <!-- <span class="event-l-btns__edit">
+                                        <a href="<?php echo Wo_SeoLink('index.php?link1=edit-event&eid=' . $wo['event']['id']); ?>" class="btn btn-default btn-mat">
+    <?php echo $wo['lang']['edit']; ?>
+                                        </a>
+                                </span> -->
+                <?php endif; ?>
+                <?php if (Wo_EventGoingExists($wo['event']['id']) || $wo['user']['id'] == $wo['event']['poster_id']) : ?>
+                    <span class="event-l-btns__edit">
+                        <a href="<?php echo Wo_SeoLink('index.php?link1=room-event&eid=' . $wo['event']['id']); ?>" class="btn btn-main btn-mat">
+                            В комнату
+                        </a>
+                    </span>
+                <?php endif; ?>
+                <?php if (($wo['event']['poster_id'] != $wo['user']['id']) && $wo['event']['event_active'] < 1) : ?>
+                    <?php echo Wo_GetGoingButton($wo['event']['id']); ?>
+                    <?php echo Wo_GetInterestedButton($wo['event']['id']); ?>
+                <?php endif; ?>
+
+                <?php //elseif ($wo['event']['event_active'] === 1) : 
+                ?>
+                <!-- <span><button class="btn btn-default btn-mat" disabled>Мероприятие уже началось</button></span> -->
+                <?php //elseif ($wo['event']['event_active'] === 2) : 
+                ?>
+                <!-- <span><button class="btn btn-default btn-mat" disabled>Мероприятие прошло</button></span> -->
+                <?php //elseif ($wo['event']['event_active'] === 3) : 
+                ?>
+                <!-- <span><button class="btn btn-default btn-mat" disabled>Мероприятие отменено</button></span> -->
+                <?php //endif; 
+                ?>
+            </div>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

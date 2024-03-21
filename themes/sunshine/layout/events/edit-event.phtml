@@ -1,0 +1,509 @@
+
+<div class="page-margin">
+    <div class="row">
+        <div class="col-md-2 leftcol"><?php echo Wo_LoadPage("sidebar/left-sidebar"); ?></div>
+        <div class="col-md-7 middlecol">
+            <form class="form form-horizontal create_ev_form" method="post" id="update-event">
+                <div class="page-margin mt-0">
+                    <div class="wow_content popular_posts_hdr flex">
+                        <h2><svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.19374 11.7071L1.92479 11.5395L1.19374 11.7071ZM1.19374 6.79436L1.92479 6.96191L1.19374 6.79436ZM14.805 6.79436L14.0739 6.96192L14.805 6.79436ZM14.805 11.7071L14.0739 11.5395L14.805 11.7071ZM10.3995 16.2158L10.5745 16.945L10.3995 16.2158ZM5.59923 16.2158L5.7743 15.4865L5.59923 16.2158ZM5.59923 2.28566L5.7743 3.01494L5.59923 2.28566ZM10.3995 2.28566L10.5745 1.55638L10.3995 2.28566ZM5.47442 1.5C5.47442 1.08579 5.13863 0.75 4.72442 0.75C4.3102 0.75 3.97442 1.08579 3.97442 1.5H5.47442ZM3.97442 3.59479C3.97442 4.009 4.3102 4.34479 4.72442 4.34479C5.13863 4.34479 5.47442 4.009 5.47442 3.59479H3.97442ZM12.0243 1.5C12.0243 1.08579 11.6885 0.75 11.2743 0.75C10.8601 0.75 10.5243 1.08579 10.5243 1.5H12.0243ZM10.5243 3.59479C10.5243 4.009 10.8601 4.34479 11.2743 4.34479C11.6885 4.34479 12.0243 4.009 12.0243 3.59479H10.5243ZM1.92479 11.5395C1.57976 10.0341 1.57976 8.46728 1.92479 6.96191L0.462699 6.6268C0.0671211 8.35272 0.0671211 10.1487 0.462699 11.8746L1.92479 11.5395ZM14.0739 6.96192C14.4189 8.46728 14.4189 10.0341 14.0739 11.5395L15.536 11.8746C15.9316 10.1487 15.9316 8.35272 15.536 6.62681L14.0739 6.96192ZM10.2244 15.4865C8.76082 15.8378 7.23788 15.8378 5.7743 15.4865L5.42416 16.945C7.11789 17.3517 8.88081 17.3517 10.5745 16.945L10.2244 15.4865ZM5.7743 3.01494C7.23788 2.66359 8.76082 2.66359 10.2244 3.01494L10.5745 1.55638C8.88081 1.14978 7.11789 1.14978 5.42415 1.55638L5.7743 3.01494ZM5.7743 15.4865C3.87263 15.03 2.37561 13.5065 1.92479 11.5395L0.462699 11.8746C1.03738 14.382 2.95395 16.352 5.42416 16.945L5.7743 15.4865ZM10.5745 16.945C13.0448 16.352 14.9613 14.382 15.536 11.8746L14.0739 11.5395C13.6231 13.5065 12.1261 15.03 10.2244 15.4865L10.5745 16.945ZM10.2244 3.01494C12.1261 3.47146 13.6231 4.99497 14.0739 6.96192L15.536 6.62681C14.9613 4.11945 13.0448 2.14939 10.5745 1.55638L10.2244 3.01494ZM5.42415 1.55638C2.95395 2.14939 1.03738 4.11945 0.462699 6.6268L1.92479 6.96191C2.37561 4.99497 3.87263 3.47146 5.7743 3.01494L5.42415 1.55638ZM1.44948 6.64905H14.5492V5.14905H1.44948V6.64905ZM3.97442 1.5V3.59479H5.47442V1.5H3.97442ZM10.5243 1.5V3.59479H12.0243V1.5H10.5243Z" class="icon_main_fill"></path><path d="M9.20156 10.6033C9.53906 10.3633 9.74906 10.0033 9.74906 9.51583C9.74906 8.50333 8.96906 7.97833 8.04656 7.97833C7.12406 7.97833 6.33656 8.50333 6.33656 9.51583C6.33656 10.0033 6.55406 10.3633 6.88406 10.6033C6.42656 10.8808 6.16406 11.3383 6.16406 11.8708C6.16406 12.8383 6.87656 13.4383 8.04656 13.4383C9.20906 13.4383 9.92906 12.8383 9.92906 11.8708C9.92906 11.3383 9.66656 10.8808 9.20156 10.6033ZM8.04656 8.95333C8.43656 8.95333 8.72156 9.17833 8.72156 9.56833C8.72156 9.95083 8.43656 10.1908 8.04656 10.1908C7.65656 10.1908 7.37156 9.95083 7.37156 9.56833C7.37156 9.17833 7.65656 8.95333 8.04656 8.95333ZM8.04656 12.4633C7.55156 12.4633 7.19156 12.2083 7.19156 11.7358C7.19156 11.2708 7.55156 11.0158 8.04656 11.0158C8.54156 11.0158 8.90156 11.2708 8.90156 11.7358C8.90156 12.2083 8.54156 12.4633 8.04656 12.4633Z" fill="currentColor"></path></svg>&nbsp;<?php echo $wo['lang']['edit_event']; ?></h2>
+                        <div class="btnss">
+                            <a class="btn btn-mat btn-default" href="<?php echo Wo_SeoLink('index.php?link1=my-events'); ?>" data-ajax="?link1=my-events"><?php echo $wo['lang']['cancel']; ?></a>
+                            <button class="btn btn-main btn-mat add_wow_loader" type="submit"><?php echo $wo['lang']['save']; ?></button>
+
+                            <div  class="btn btn-mat btn-main" id="wallet_btn" style="display:none">ПОПОЛНИТЬ СЧЕТ</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-margin wow_content wow_sett_content">
+                    <div class="setting-general-alert setting-update-alert" id="event-alert"></div>
+
+                    <div class="wow_form_fields">
+                        <label for="event-name"><?php echo $wo['lang']['name']; ?></label>
+                        <input id="event-name" name="event-name" type="text" value="<?php echo $wo['event']['name']; ?>">
+                    </div>
+                    <div class="wow_form_fields">
+                        <label for="event-category"><?php echo $wo['lang']['event-category']; ?></label>
+                        <select name="event-category" id="event-category" >
+                            <?php foreach (Wo_GetEventsCategories() as $category): ?>
+                                <option  value="<?php echo $category->id; ?>" <?php if ($category->id == $wo['event']['category_id']): ?> selected<?php endif; ?>><?php echo $category->name; ?></option >
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="wow_form_fields" style="display: none">
+                        <label for="event-name"><?php echo $wo['lang']['event_format']; ?></label>
+
+                        <div class="wow_srch_innr_filtr">
+
+                            <div class="pp_mat_input">
+                                <div class="round_check">
+                                    <input type="radio" name="status" id="status-0" value="0" <?php if ($wo['event']['status'] == 0): ?> checked<?php endif; ?>>
+                                        <label class="radio-inline" for="status-0"><?php echo $wo['lang']['all']; ?></label> 
+                                </div>
+                                <div class="round_check">
+                                    <input type="radio" name="status" id="status-1" value="1" <?php if ($wo['event']['status'] == 1): ?> checked<?php endif; ?>>
+                                        <label class="radio-inline" for="status-1"><?php echo $wo['lang']['online']; ?></label>
+                                </div>
+                                <div class="round_check">
+                                    <input type="radio" name="status" id="status-2" value="2" <?php if ($wo['event']['status'] == 2): ?> checked<?php endif; ?>>
+                                        <label class="radio-inline" for="status-2"><?php echo $wo['lang']['offline']; ?></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wow_form_fields">
+                        <label for="event-price"><?php echo $wo['lang']['price']; ?> (от 100 рублей)</label>
+                        <input id="event-price" name="event-price" type="number" value="<?php echo $wo['event']['event_price']; ?>">
+                    </div>
+                    <div class="wow_form_fields">
+                        <label for="event-tags"><?php echo $wo['lang']['tags']; ?></label>
+                        <input data-role="tagsinput" id="event-tags" name="event-tags" value="<?php echo Wo_GetEventTags($wo['event']['id']); ?>" type="text" placeholder="<?php echo $wo['lang']['tags']; ?>">
+                    </div>
+                    <?php if (false): ?>
+                        <div class="wow_form_fields">
+                            <label for="event-locat"><?php echo $wo['lang']['location']; ?></label>
+                            <input id="event-locat" name="event-locat" type="text" value="<?php echo $wo['event']['location']; ?>">
+                        </div>
+                        <?php if ($wo['config']['google_map'] == 1 || $wo['config']['yandex_map'] == 1) { ?>
+                            <div id="review-location">
+                                <div id="place" <?php echo($wo['config']['yandex_map'] == 1 ? 'class="yandex_ads_map"' : '') ?>>
+                                    <?php if ($wo['config']['google_map'] == 1) { ?>
+                                        <iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=<?php echo $wo['event']['location']; ?>&language=en"></iframe>
+                                    <?php } ?>
+                                    <?php if ($wo['config']['yandex_map'] == 1) { ?>
+                                        <script type="text/javascript">
+            <?php if (!empty($wo['event']['location'])) { ?>
+                                                setTimeout(function () {
+                                                    var myMap;
+                                                    ymaps.geocode("<?php echo($wo['event']['location']); ?>").then(function (res) {
+                                                        myMap = new ymaps.Map('place', {
+                                                            center: res.geoObjects.get(0).geometry.getCoordinates(),
+                                                            zoom: 10
+                                                        });
+                                                        myMap.geoObjects.add(new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
+                                                            balloonContent: ''
+                                                        }));
+                                                    });
+                                                }, 1000);
+            <?php } ?>
+                                        </script>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php endif; ?>
+                    <div class="wow_form_fields">
+                        <label for="event-start"><?php echo $wo['lang']['event_start']; ?></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="date" id="event-start" name="event-start-date" value="<?php echo $wo['event']['start_edit_date']; ?>">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="event-start-time" class="time1" name="event-start-time" value="<?php echo $wo['event']['start_time']; ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wow_form_fields" style="display: none">
+                        <label for="event-end-date"><?php echo $wo['lang']['event_end']; ?></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="date1" name="event-end-date" id="event-end-date" value="<?php echo $wo['event']['end_edit_date']; ?>">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="event-end-time" class="time1" name="event-end-time" value="<?php echo $wo['event']['end_time']; ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wow_form_fields e_time">
+                        <label for="event-category">Длительность мероприятия в часах</label>
+                        <select name="event-time" id="event-time">
+                            <option disabled>Выберите длительность в часах</option >
+                            <?php foreach (EventsCoastsTime() as $k => $cst): ?>
+                                <option class="tm<?php echo $k; ?>" value="<?php echo $k; ?>" data-price="<?php echo $cst; ?>" <?php if ($wo['event']['event_create_price'] == $cst): ?> selected <?php endif; ?>><?php echo $k; ?> (стоимость создания: <?php echo $cst; ?> руб.)</option >
+                            <?php endforeach; ?>
+                        </select>
+                        <input type="hidden" id="time-pay" class="time-pay" name="time-pay" value="<?php echo $wo['event']['event_create_price']; ?>">
+                    </div>
+                    <div class="wow_form_fields">
+                        <label for="event-description"><?php echo $wo['lang']['description']; ?></label>
+                        <?php $text = br2nl($wo['event']['description']); ?> 
+                        <textarea name="event-description" id="event-description" rows="5"><?php echo $text; ?></textarea>
+                    </div>
+
+                    <div class="wow_form_fields">
+                        <label><?php echo $wo['lang']['image']; ?></label>
+                        <div class="wow_fcov_image">
+                            <div id="wow_fcov_img_holder">
+                                <img src="<?php echo $wo['event']['cover']; ?>" alt="<?php echo $wo['event']['name']; ?>">
+                            </div>
+                            <div class="upload_ad_image" onclick="document.getElementById('event-cover').click();
+                                    return false">
+                                <div class="upload_ad_image_content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z"></path></svg> <?php echo $wo['lang']['choose_image'] ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession(); ?>">
+                        <input type="file" name="event-cover" class="hidden" id="event-cover" accept="image/*">
+
+                            </div>
+                            </form>
+                            </div>
+                            <!-- .col-md-8 -->
+                            <?php echo Wo_LoadPage('sidebar/content'); ?>
+                            </div>
+                            </div>
+
+                            <script>
+                                $(".create_ev_form").validate({
+                                    rules: {
+
+                                        "event-name": {
+                                            required: true,
+                                            minlength: 10,
+                                        },
+                                        "event-category": {
+                                            required: true,
+                                        },
+                                        "event-price": {
+                                            required: true,
+                                            min: 100
+                                        },
+//                                        "event-locat": {
+//                                            required: true,
+//                                        },
+
+                                        "event-start-time": {
+                                            required: true,
+                                        },
+                                        "event-time": {
+                                            required: true,
+                                        },
+                                        "event-description": {
+                                            required: true,
+                                            minlength: 32
+                                        }
+                                    },
+                                    messages: {
+                                        "event-name": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                            minlength: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* миниум 10 символов</span></div>",
+
+                                        },
+                                        "event-description": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                            minlength: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* миниум 32 символа</span></div>",
+
+                                        },
+                                        "event-category": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                        },
+//                                        "event-locat": {
+//                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+//                                        },
+                                        "event-start-time": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                        },
+                                        "event-time": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                        },
+                                        "event-price": {
+                                            required: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* поле не заполнено</span></div>",
+                                            min: "<div style='background-color:#e86477; border-radius:5px;'><span style='padding: 2px'>* стоимость должна быть больше 100 рублей</span></div>",
+                                        },
+                                    },
+                                });
+
+
+                                jQuery(document).ready(function ($) {
+                                    $(".date").flatpickr({
+                                        dateFormat: "Y-m-d",
+                                        altInput: true,
+                                        altFormat: "F j, Y",
+                                        minDate: "today",
+                                        "locale": "ru"
+                                    });
+
+                                    $(".time1").flatpickr({
+                                        enableTime: true,
+                                        noCalendar: true,
+                                        dateFormat: "H:i",
+                                        time_24hr: true
+                                    });
+
+                                    $(".date1").flatpickr({
+                                        dateFormat: "Y-m-d",
+                                        altInput: true,
+                                        altFormat: "F j, Y",
+                                        minDate: new Date().fp_incr(0),
+                                        "locale": "ru"
+                                    });
+                                    $("#event-end-time").change(function (event) {
+                                        let end = event.target.value;
+                                        let start = $("#event-start-time").val();
+                                        if (end < start) {
+                                            $("#event-end-time").val(start);
+                                        }
+                                    });
+//добавляем select на время мероприятия
+//                                    (function setEventTime() {
+//                                        let st = $("#event-start-time").val();
+//                                        let en = $("#event-end-time").val();
+//                                        let d1 = $(".date").val();
+//                                        let d2 = $(".date1").val();
+//                                        let statt_arr = st.split(":");
+//                                        let end_arr = en.split(":");
+//                                        let e_tm = 0;
+//                                        if (d1 == d2) {
+//                                            e_tm = +end_arr[0] - +statt_arr[0];
+//                                        } else {
+//                                            e_tm = (24 - +statt_arr[0]) + +end_arr[0];
+//                                        }
+//                                        $("#event-time").val(e_tm);
+//                                    })();
+
+
+                                    $(".time1").change(function (event) {
+                                        my_time();
+                                    });
+
+                                    $("#time-pay").val($(".tm" + $("#event-time").val()).attr('data-price'));
+
+                                    $("#event-time").change(function (event) {
+                                        let idx = event.target.options.selectedIndex;
+                                        let price = event.target.options[idx].getAttribute('data-price');
+                                        console.log(price);
+                                        $("#time-pay").val(price);
+                                        $("#wallet_btn").on("click", function () {
+                                            rncbWidget(price);
+                                        });
+                                        my_time();
+                                    });
+
+                                    function my_date(addday = 0) {
+
+                                        let d_start = $(".date").val();
+                                        var d_start_arr = d_start.split("-");
+                                        console.log(d_start_arr);
+                                        var D = new Date();
+                                        D.setFullYear(d_start_arr[0]);
+                                        D.setMonth(d_start_arr[1] - 1);
+                                        D.setDate(d_start_arr[2]);
+
+                                        D.setDate(D.getDate() + addday);
+//            let new_date = +d_start_arr[0] + '-' + d_start_arr[1] + '-' + (+d_start_arr[2] + addday);
+                                        let new_date = D.getFullYear() + '-' + (D.getMonth() + 1) + '-' + D.getDate();
+                                        console.log(D.getFullYear() + '-' + (D.getMonth() + 1) + '-' + D.getDate());
+
+                                        $(".date1").val(new_date);
+                                    }
+
+                                    $(".date").change(function (event) {
+                                        $(".start_tm").css("display", "block");
+                                        my_time();
+                                    });
+
+                                    function my_time() {
+                                        let start = $("#event-start-time").val();
+                                        let time_costs = $("#event-time").val();
+                                        var statt_arr = start.split(":");
+                                        if (+statt_arr[0] + (+time_costs) > 23) {
+                                            statt_arr[0] = +statt_arr[0] - 24;
+                                            my_date(1);
+                                        } else {
+                                            my_date(0);
+                                        }
+                                        $("#event-end-time").val((+statt_arr[0] + (+time_costs)) + ':' + statt_arr[1]);
+                                    }
+
+<?php if ($wo['config']['google_map'] == 1) { ?>
+                                        $("#event-locat").change(function (event) {
+                                            if ($(this).val().length >= 3) {
+                                                $("#review-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=' + $("#event-locat").val() + '&language=en"></iframe>')
+                                            } else {
+                                                $("#review-location #place").html('<iframe width="100%" frameborder="0" style="border:0;margin-top: 10px;" src="https://www.google.com/maps/embed/v1/place?key=<?php echo $wo['config']['google_map_api']; ?>&q=us&language=en"></iframe>')
+                                            }
+                                        });
+<?php } ?>
+<?php if ($wo['config']['yandex_map'] == 1) { ?>
+                                        $(document).on('change', '#event-locat', function (event) {
+                                            $("#review-location #place").html('');
+                                            var myMap;
+                                            ymaps.geocode($(this).val()).then(function (res) {
+                                                myMap = new ymaps.Map('place', {
+                                                    center: res.geoObjects.get(0).geometry.getCoordinates(),
+                                                    zoom: 10
+                                                });
+                                                myMap.geoObjects.add(new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
+                                                    balloonContent: ''
+                                                }));
+                                            });
+                                        });
+
+<?php } ?>
+
+                                    $("#event-cover").change(function (event) {
+                                        $("#wow_fcov_img_holder").html("<img src='" + window.URL.createObjectURL(this.files[0]) + "' alt='Picture'>")
+                                    });
+
+                                    $('#update-event').ajaxForm({
+                                        url: Wo_Ajax_Requests_File() + '?f=update-event&eid=<?php echo $wo['event']['id']; ?>',
+                                        beforeSend: function () {
+                                            $('.wo_settings_page').find('.add_wow_loader').addClass('btn-loading');
+                                        },
+                                        success: function (data) {
+                                            if (data['status'] == 200) {
+                                                $("#event-alert").html('<div class="alert alert-success">' + data['message'] + '</div>');
+                                                localStorage.removeItem("event-name");
+                                                localStorage.removeItem("event-category");
+                                                localStorage.removeItem("event-price");
+                                                localStorage.removeItem("event-tags");
+                                                localStorage.removeItem("event-locat");
+                                                localStorage.removeItem("event-start");
+                                                localStorage.removeItem("event-start-time");
+                                                localStorage.removeItem("event-end-date");
+                                                localStorage.removeItem("event-end-time");
+                                                localStorage.removeItem("event-time");
+                                                localStorage.removeItem("time-pay");
+                                                localStorage.removeItem("event-description");
+                                                window.location = data['url'];
+                                            } else if (data['message']) {
+                                                if (data['pay'] == 1) {
+                                                    localStorage.setItem("event-name", $('#event-name').val());
+                                                    localStorage.setItem("event-category", $('#event-category').val());
+                                                    localStorage.setItem("event-price", $('#event-price').val());
+                                                    localStorage.setItem("event-tags", $('#event-tags').val());
+                                                    localStorage.setItem("event-locat", $('#event-locat').val());
+                                                    localStorage.setItem("event-start", $('#event-start').val());
+                                                    localStorage.setItem("event-start-time", $('#event-start-time').val());
+                                                    localStorage.setItem("event-end-date", $('#event-end-date').val());
+                                                    localStorage.setItem("event-end-time", $('#event-end-time').val());
+                                                    localStorage.setItem("event-time", $('#event-time').val());
+                                                    localStorage.setItem("time-pay", $('#time-pay').val());
+                                                    localStorage.setItem("event-description", $('#event-description').val());
+                                                    $("#wallet_btn").css("display", "block");
+                                                }
+                                                $("#event-alert").html('<div class="alert alert-danger">' + data['message'] + '</div>');
+                                            }
+                                            $('.wo_settings_page').find('.add_wow_loader').removeClass('btn-loading');
+                                        }
+                                    });
+                                });
+                            </script>
+                            <?php if (isset($_GET['ID']) && isset($_GET['STATUS'])): ?>
+                                <script>
+                                    $('#event-name').val(localStorage.getItem("event-name"));
+                                    $('#event-category').val(localStorage.getItem("event-category"));
+                                    $('#event-price').val(localStorage.getItem("event-price"));
+                                    $('#event-tags').val(localStorage.getItem("event-tags"));
+                                    $('#event-locat').val(localStorage.getItem("event-locat"));
+                                    $('#event-start').val(localStorage.getItem("event-start"));
+                                    $('#event-start-time').val(localStorage.getItem("event-start-time"));
+                                    $('#event-end-date').val(localStorage.getItem("event-end-date"));
+                                    $('#event-end-time').val(localStorage.getItem("event-end-time"));
+                                    $('#event-time').val(localStorage.getItem("event-time"));
+                                    $('#time-pay').val(localStorage.getItem("time-pay"));
+                                    $('#event-description').val(localStorage.getItem("event-description"));
+                                    $(".e_time").css("display", "block");
+                                    $(".start_tm").css("display", "block");
+                                </script>
+                            <?php endif; ?>
+                            <style>
+                                .rncb-widget-form {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    flex-direction: column;
+                                }
+                                .rncb-widget-field {
+                                    margin-top: 4px;
+                                }
+                                .rncb-form-element {
+
+                                }
+                                .break {
+                                    flex-basis: 100%;
+                                    height: 0;
+                                }
+                            </style>
+                            <div id="widgetContainer" style="background-color: #dadad2"></div>
+                            <div class="rncb-widget-form">
+                                <input class="rncb-widget-field" type="hidden" name="fld_amount" id="fld_amount" value="<?php echo $wo['event']['event_price']; ?>" />
+                                <div class="rncb-form-element">
+                                    <input class="rncb-widget-field" type="hidden" name="fld_email" id="fld_email" value="<?php echo $wo['user']['email']; ?>" placeholder="Email" />
+                                </div>
+
+                                <div class="rncb-form-element">
+                                    <button name="button" type="button" id="initWidget" aria-busy="false" style="display:none">
+                                        <span>Оплатить сейчас</span>
+                                    </button>
+                                </div>
+                                <div class="rncb-form-element">
+                                    <button name="button" type="button" id="continueButton" aria-busy="false" style="display: none">
+                                        <span></span>
+                                    </button>
+                                </div>
+                            </div>
+                                       
+<script>
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    jQuery(document).ready(function() {
+        const observer = new MutationObserver(function(mutations) {
+            const iframe = document.querySelector("iframe[name='hppIFrame']");
+            if (iframe) {
+                iframe.style.removeProperty('display');
+                observer.disconnect();
+            }
+        });
+        observer.observe(document, {
+            attributes: false,
+            childList: true,
+            characterData: false,
+            subtree: true
+        });
+
+        document.getElementById('initWidget').addEventListener('click', function(el) {
+            const orderData = {
+                'order': {
+                    "typeRid": "Sale Order Type_Single_CVV",
+                    "amount": document.querySelector('#fld_amount').value.toString(),
+                    "currency": "RUB",
+                    "description": "",
+                    "language": "ru",
+                    "srcEmail": document.getElementById('fld_email').value.toString(),
+
+                    "hppRedirectUrl": location.href
+                },
+                'auth': {
+                    'userName': 'TerminalSys/50000308',
+                    'password': 'Nov@22112023'
+                },
+                'terminalId': '1252',
+                'merchantId': '1245'
+            };
+            if (false) {
+                orderData.order.description = orderData.order.description.substr(0, 140);
+            }
+            const listeners = {
+                onSuccess(data) {
+                    console.log('Заказ оплачен', data);
+                },
+                onFail(data) {
+                    console.log('Произошла ошибка', data);
+                }
+            };
+            const hppIntegrationApi = new HppIntegrationApi(orderData, listeners);
+            const payButton = document.getElementById('continueButton');
+            hppIntegrationApi.createWidget(document.getElementById('widgetContainer'), {
+                payButton
+            });
+            payButton.click();
+        });
+    });
+</script>
